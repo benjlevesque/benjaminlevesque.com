@@ -1,65 +1,78 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Link from "next/link";
+import React from "react";
+import DockerIcon from "../components/icons/docker";
+import GithubIcon from "../components/icons/github";
+import GolangIcon from "../components/icons/golang";
+import KubernetesIcon from "../components/icons/kubernetes";
+import ReactIcon from "../components/icons/react";
+import TwitterIcon from "../components/icons/twitter";
+import TypescriptIcon from "../components/icons/typescript";
+import styles from "../styles/Home.module.css";
+
+const DevIcon = ({ title, icon: Icon }) => {
+  return (
+    <span title={title}>
+      <Icon className={styles.devicon} />
+    </span>
+  );
+};
+
+const Header = () => {
+  return (
+    <h1 className={styles.title}>
+      <span className={styles.nowrap}>Hi there,</span>{" "}
+      <span className={styles.nowrap}>I'm Benjamin.</span>
+    </h1>
+  );
+};
+
+const Summary = () => {
+  return (
+    <div className={styles.summary}>
+      <p>I'm a software developer working with</p>
+      <div className={styles.icons}>
+        <DevIcon title="Typescript" icon={TypescriptIcon} />
+        <DevIcon title="Go" icon={GolangIcon} />
+        <DevIcon title="React" icon={ReactIcon} />
+        <DevIcon title="Docker" icon={DockerIcon} />
+        <DevIcon title="Kubernetes" icon={KubernetesIcon} />
+      </div>
+    </div>
+  );
+};
+
+export const Links = () => {
+  return (
+    <div className={styles.links}>
+      <Link href="https://github.com/benjlevesque">
+        <a className={styles.social} target="_blank" rel="noopener noreferrer">
+          <GithubIcon fill="#64b6ac" className={styles.icon} />
+          <span className={styles.code}>benjlevesque</span>
+        </a>
+      </Link>
+      <Link href="https://twitter.com/benjlevesque">
+        <a className={styles.social} target="_blank" rel="noopener noreferrer">
+          <TwitterIcon fill="#64b6ac" className={styles.icon} />
+          <span className={styles.code}>benjlevesque</span>
+        </a>
+      </Link>
+    </div>
+  );
+};
 
 export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Benjamin's page</title>
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+        <Header />
+        <Summary />
+        <Links />
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
     </div>
-  )
+  );
 }
