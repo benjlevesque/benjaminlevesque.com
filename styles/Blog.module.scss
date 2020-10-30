@@ -1,0 +1,48 @@
+.articleList {
+  max-width: 750px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.articleList .articleItem {
+  padding: 2rem;
+  border-bottom: solid 1px rgb(125, 170, 146);
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &:last-child {
+    border-bottom: none;
+  }
+  &:hover {
+    background-color: rgb(125, 170, 146, 0.1);
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 600px) {
+  .articleList .articleItem {
+    flex-direction: column;
+  }
+}
+
+.article {
+  margin-top: 1rem;
+  padding: 1rem;
+  max-width: 850px;
+  text-align: justify;
+  font-size: 18px;
+
+  .date {
+    font-style: italic;
+    text-align: right;
+  }
+  a {
+    color: #218380;
+  }
+}

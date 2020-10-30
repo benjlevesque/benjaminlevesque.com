@@ -12,10 +12,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 @media (max-width: 600px) {
   .main {
-    justify-content: center;
     padding: 0;
   }
 }
@@ -41,4 +41,24 @@
 
 .pageTitle {
   font-size: 4rem;
+  text-align: center;
+}
+@media (max-width: 600px) {
+  .pageTitle {
+    font-size: 3rem;
+  }
+}
+
+.menu,
+.menu a {
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.menu svg {
+  margin-right: 1rem;
 }
