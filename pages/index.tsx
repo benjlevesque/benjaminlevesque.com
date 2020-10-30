@@ -8,6 +8,7 @@ import KubernetesIcon from "../components/icons/kubernetes";
 import ReactIcon from "../components/icons/react";
 import TwitterIcon from "../components/icons/twitter";
 import TypescriptIcon from "../components/icons/typescript";
+import { Terminal, TerminalRow } from "../components/terminal";
 import styles from "../styles/Home.module.css";
 
 const DevIcon = ({ title, icon: Icon }) => {
@@ -30,14 +31,21 @@ const Header = () => {
 const Summary = () => {
   return (
     <div className={styles.summary}>
-      <p>I'm a software developer working with</p>
-      <div className={styles.icons}>
-        <DevIcon title="Typescript" icon={TypescriptIcon} />
-        <DevIcon title="Go" icon={GolangIcon} />
-        <DevIcon title="React" icon={ReactIcon} />
-        <DevIcon title="Docker" icon={DockerIcon} />
-        <DevIcon title="Kubernetes" icon={KubernetesIcon} />
-      </div>
+      <Terminal>
+        <TerminalRow title="whoami">
+          <div className={styles.whoami}>
+            <p>I'm a software developer working with</p>
+            <div className={styles.icons}>
+              <DevIcon title="Typescript" icon={TypescriptIcon} />
+              <DevIcon title="Go" icon={GolangIcon} />
+              <DevIcon title="React" icon={ReactIcon} />
+              <DevIcon title="Docker" icon={DockerIcon} />
+              <DevIcon title="Kubernetes" icon={KubernetesIcon} />
+            </div>
+          </div>
+        </TerminalRow>
+        <TerminalRow cursor />
+      </Terminal>
     </div>
   );
 };

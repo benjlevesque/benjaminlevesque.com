@@ -164,29 +164,30 @@
 }
 
 .summary {
-  font-size: 1.25rem;
-  line-height: 1.5;
   margin-top: 3rem;
   margin-bottom: 3rem;
-  display: flex;
-  flex-direction: column;
-  padding: 2em 5em;
-  box-shadow: 0 -1px 5px rgba(255, 255, 255, 1);
-  border-radius: 5px;
-  text-align: center;
+  width: 100%;
 }
+
 @media (max-width: 600px) {
   .summary {
-    padding: 1em 1.5em;
+    padding: 0.25em;
   }
-}
-.summary > .icons {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
 }
 
 .devicon {
   height: 1em;
   font-size: 2.5rem;
+}
+
+.whoami {
+  text-align: center;
+}
+
+.whoami > .icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  max-width: 375px;
+  margin: auto;
 }

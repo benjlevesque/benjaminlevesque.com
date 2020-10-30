@@ -1,0 +1,85 @@
+/* inspired from https://codepen.io/addyosmani/pen/avxmvN */
+.fakeButtons {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  border: 1px solid #000;
+  position: relative;
+  display: inline-block;
+}
+
+.fakeClose {
+  @extend .fakeButtons;
+  left: 6px;
+  background-color: #ff3b47;
+  border-color: #9d252b;
+}
+
+.fakeMinimize {
+  @extend .fakeButtons;
+  left: 11px;
+  background-color: #ffc100;
+  border-color: #9d802c;
+}
+
+.fakeZoom {
+  @extend .fakeButtons;
+  left: 16px;
+  background-color: #00d742;
+  border-color: #049931;
+}
+
+.fakeMenu {
+  max-width: 550px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 25px;
+  background-color: #bbb;
+  margin: 0 auto;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.fakeScreen {
+  background-color: #151515;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 550px;
+  margin: 0 auto;
+  padding: 20px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.line {
+  position: relative;
+  font-size: 1.25em;
+  font-family: monospace;
+  white-space: normal;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.cursor {
+  color: #fff;
+  font-weight: bold;
+  animation: blink 1s 1s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
