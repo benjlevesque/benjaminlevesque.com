@@ -1,8 +1,6 @@
 import React from "react";
 import styles from "../styles/Terminal.module.scss";
 
-const classnames = (...params: string[]) => params.join(" ");
-
 export const Terminal = ({ children }) => {
   return (
     <>
