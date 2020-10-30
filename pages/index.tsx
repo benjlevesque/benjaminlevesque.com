@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Link from "next/link";
 import React from "react";
 import DockerIcon from "../components/icons/docker";
@@ -8,6 +7,7 @@ import KubernetesIcon from "../components/icons/kubernetes";
 import ReactIcon from "../components/icons/react";
 import TwitterIcon from "../components/icons/twitter";
 import TypescriptIcon from "../components/icons/typescript";
+import { Layout, PageContent, PageTitle } from "../components/Layout";
 import { Terminal, TerminalRow } from "../components/terminal";
 import styles from "../styles/Home.module.css";
 
@@ -71,16 +71,12 @@ export const Links = () => {
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Benjamin's page</title>
-      </Head>
-
-      <main className={styles.main}>
+    <Layout title="Benjamin's page">
+      <PageContent>
         <Header />
         <Summary />
         <Links />
-      </main>
-    </div>
+      </PageContent>
+    </Layout>
   );
 }
