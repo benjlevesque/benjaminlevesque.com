@@ -21,7 +21,6 @@ class MyDocument extends Document {
             name="description"
             content="Hi, I'm Benjamin. I'm a Software Developer working with web technologies."
           />
-          <link rel="manifest" href="/site.webmanifest" />
         </Head>
         <body>
           <Main />
