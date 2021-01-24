@@ -76,7 +76,6 @@ export const Links = () => {
     <div className={styles.links}>
       <AppLink text="benjlevesque" {...navigation.github} />
       <AppLink text="benjlevesque" {...navigation.twitter} />
-      <AppLink text="Blog" {...navigation.blog} />
     </div>
   );
 };
