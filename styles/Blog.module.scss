@@ -23,7 +23,12 @@
   .title {
     font-size: 2rem;
   }
+
+  &.active {
+    background-color: rgb(125, 170, 146, 0.1);
+  }
 }
+
 @media (max-width: 600px) {
   .articleList .articleItem {
     flex-direction: column;
