@@ -9,6 +9,8 @@ import HomeIcon from "./icons/home";
 import BlogIcon from "./icons/blog";
 import { motion } from "framer-motion";
 import { CloseIcon } from "./icons/close";
+import { KeyboardNav } from "./KeyboardNav";
+import { useKeyListener } from "../lib/useKeyListener";
 
 export const PageCloser: React.FC<{
   close?: () => void;
@@ -20,19 +22,7 @@ export const PageCloser: React.FC<{
     router.push(closeRoute ? closeRoute : "/");
   }, [router, closeRoute]);
 
-  if (!close) {
-    close = defaultClose;
-  }
-
-  useEffect(() => {
-    const onEscKey = (ev: KeyboardEvent) => {
-      if (ev.key === "Escape") {
-        close();
-      }
-    };
-    window.addEventListener("keydown", onEscKey);
-    return () => window.removeEventListener("keydown", onEscKey);
-  }, [close]);
+  useKeyListener("Escape", close || defaultClose);
 
   return (
     <motion.div whileHover={{ rotate: 90 }} className={styles.pageCloser}>
@@ -77,6 +67,7 @@ export const Layout: React.FC<{ title: string }> = ({ children, title }) => {
         <title>{title}</title>
       </Head>
       {children}
+      <KeyboardNav />
     </div>
   );
 };

@@ -1,48 +1,40 @@
-import { useCallback, useEffect, useState } from "react";
-
-const useKeyListener = (key: string, callback: () => void) => {
-  const maybeCallCallback = (ev: KeyboardEvent) => {
-    if (ev.key === key && typeof callback === "function") {
-      callback();
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("keydown", maybeCallCallback);
-    return () => window.removeEventListener("keydown", maybeCallCallback);
-  }, [key, callback]);
-};
+import { useCallback, useState } from "react";
+import { useKeyListener } from "./useKeyListener";
 
 export const useKeyboardNavigation = (
   length: number,
-  select?: (index: number | null) => void
+  select?: (index: number | null) => void,
+  initialSelection: number = -1
 ) => {
-  const [currentItem, setCurrentItem] = useState(-1);
+  const [currentItem, setCurrentItem] = useState(initialSelection);
 
   const next = useCallback(() => {
     setCurrentItem((item) => {
       if (item < length - 1) {
         return item + 1;
       }
-      return item;
+      return 0;
     });
   }, [length]);
   const previous = useCallback(() => {
     setCurrentItem((item) => {
-      if (item > -1) {
+      if (item > 0) {
         return item - 1;
       }
-      return item;
+      return length - 1;
     });
-  }, []);
+  }, [length]);
 
   useKeyListener("j", next);
+  useKeyListener("ArrowDown", next);
   useKeyListener("k", previous);
+  useKeyListener("ArrowUp", previous);
   useKeyListener("Enter", () => {
     if (select) {
       select(currentItem);
     }
   });
 
+  console.log(currentItem);
   return currentItem === -1 ? null : currentItem;
 };

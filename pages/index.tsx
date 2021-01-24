@@ -1,17 +1,15 @@
 import Link from "next/link";
 import React from "react";
 import { motion } from "framer-motion";
-import BlogIcon from "../components/icons/blog";
 import DockerIcon from "../components/icons/docker";
-import GithubIcon from "../components/icons/github";
 import GolangIcon from "../components/icons/golang";
 import KubernetesIcon from "../components/icons/kubernetes";
 import ReactIcon from "../components/icons/react";
-import TwitterIcon from "../components/icons/twitter";
 import TypescriptIcon from "../components/icons/typescript";
 import { Layout, PageContent, PageTitle } from "../components/Layout";
 import { Terminal, TerminalRow } from "../components/terminal";
 import styles from "../styles/Home.module.css";
+import { navigation } from "../lib/navigation";
 
 const DevIcon = ({ title, icon: Icon }) => {
   return (
@@ -56,14 +54,17 @@ const Summary = () => {
 
 const AppLink: React.FC<{
   href: string;
-  icon: any;
+  icon?: (...props: any) => JSX.Element;
   text: string;
-  target?: string;
-}> = ({ href, icon: Icon, text, target }) => {
+}> = ({ href, icon: Icon, text }) => {
   return (
     <Link href={href}>
-      <a className={styles.social} target={target} rel="noopener noreferrer">
-        <Icon fill="#64b6ac" className={styles.icon} />
+      <a
+        className={styles.social}
+        target={href.startsWith("http") ? "_blank" : undefined}
+        rel="noopener noreferrer"
+      >
+        {Icon && <Icon fill="#64b6ac" className={styles.icon} />}
         <span className={styles.code}>{text}</span>
       </a>
     </Link>
@@ -73,19 +74,9 @@ const AppLink: React.FC<{
 export const Links = () => {
   return (
     <div className={styles.links}>
-      <AppLink
-        text="benjlevesque"
-        href="https://github.com/benjlevesque"
-        icon={GithubIcon}
-        target="_blank"
-      />
-      <AppLink
-        text="benjlevesque"
-        href="https://twitter.com/benjlevesque"
-        icon={TwitterIcon}
-        target="_blank"
-      />
-      <AppLink text="Blog" href="/blog" icon={BlogIcon} />
+      <AppLink text="benjlevesque" {...navigation.github} />
+      <AppLink text="benjlevesque" {...navigation.twitter} />
+      <AppLink text="Blog" {...navigation.blog} />
     </div>
   );
 };
