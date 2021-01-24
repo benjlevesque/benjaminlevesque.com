@@ -1,23 +1,24 @@
+$small: 600px;
+
 .header {
   padding-top: 6.75rem;
+  @media (max-width: $small) {
+    padding-top: 2rem;
+  }
 }
+
 .title {
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
   text-align: center;
-  /* color: #eb5e55; */
+  @media (max-width: $small) {
+    font-size: 3rem;
+  }
 }
 
 .nowrap {
   white-space: nowrap;
-}
-
-@media (max-width: 600px) {
-  .title {
-    padding-top: 2rem;
-    font-size: 3rem;
-  }
 }
 
 .description {
