@@ -1,5 +1,3 @@
-import Head from "next/head";
-import Slide from "react-reveal/Slide";
 import { Layout, PageContent, PageTitle } from "../components/Layout";
 import { Timeline, TimelineItem } from "../components/Timeline";
 

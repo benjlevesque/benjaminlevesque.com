@@ -54,27 +54,38 @@ const Summary = () => {
   );
 };
 
+const AppLink: React.FC<{
+  href: string;
+  icon: any;
+  text: string;
+  target?: string;
+}> = ({ href, icon: Icon, text, target }) => {
+  return (
+    <Link href={href}>
+      <a className={styles.social} target={target} rel="noopener noreferrer">
+        <Icon fill="#64b6ac" className={styles.icon} />
+        <span className={styles.code}>{text}</span>
+      </a>
+    </Link>
+  );
+};
+
 export const Links = () => {
   return (
     <div className={styles.links}>
-      <Link href="https://github.com/benjlevesque">
-        <a className={styles.social} target="_blank" rel="noopener noreferrer">
-          <GithubIcon fill="#64b6ac" className={styles.icon} />
-          <span className={styles.code}>benjlevesque</span>
-        </a>
-      </Link>
-      <Link href="https://twitter.com/benjlevesque">
-        <a className={styles.social} target="_blank" rel="noopener noreferrer">
-          <TwitterIcon fill="#64b6ac" className={styles.icon} />
-          <span className={styles.code}>benjlevesque</span>
-        </a>
-      </Link>
-      <Link href="/blog">
-        <a className={styles.social} rel="noopener noreferrer">
-          <BlogIcon fill="#64b6ac" className={styles.icon} />
-          <span className={styles.code}>Blog</span>
-        </a>
-      </Link>
+      <AppLink
+        text="benjlevesque"
+        href="https://github.com/benjlevesque"
+        icon={GithubIcon}
+        target="_blank"
+      />
+      <AppLink
+        text="benjlevesque"
+        href="https://twitter.com/benjlevesque"
+        icon={TwitterIcon}
+        target="_blank"
+      />
+      <AppLink text="Blog" href="/blog" icon={BlogIcon} />
     </div>
   );
 };
