@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import { motion } from "framer-motion";
 import BlogIcon from "../components/icons/blog";
 import DockerIcon from "../components/icons/docker";
 import GithubIcon from "../components/icons/github";
@@ -22,10 +23,12 @@ const DevIcon = ({ title, icon: Icon }) => {
 
 const Header = () => {
   return (
-    <h1 className={styles.title}>
-      <span className={styles.nowrap}>Hi there,</span>{" "}
-      <span className={styles.nowrap}>I'm Benjamin.</span>
-    </h1>
+    <div className={styles.header}>
+      <motion.h1 layoutId="title" className={styles.title}>
+        <span className={styles.nowrap}>Hi there,</span>{" "}
+        <span className={styles.nowrap}>I'm Benjamin.</span>
+      </motion.h1>
+    </div>
   );
 };
 

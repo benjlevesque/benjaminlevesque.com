@@ -1,8 +1,10 @@
 import { format } from "date-fns";
+import { motion } from "framer-motion";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Markdown from "react-markdown";
 import {
   Layout,
+  PageCloser,
   PageContent,
   PageMenu,
   PageTitle,
@@ -11,17 +13,35 @@ import { getArticle, getArticles, IArticle } from "../../lib/articles";
 import styles from "../../styles/Blog.module.scss";
 
 export const Post: React.FC<{ article: IArticle }> = ({ article }) => {
+  const content = article.content.split("\n\n");
+
   return (
     <Layout title={article.title}>
-      <PageTitle>{article.title}</PageTitle>
+      <PageCloser closeRoute="/blog" />
+      <PageTitle layoutId={article.slug}>{article.title}</PageTitle>
       <PageContent>
         <PageMenu />
-        <div className={styles.article}>
+        <motion.div
+          layoutId="article"
+          className={styles.article}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.1 }}
+        >
           <div className={styles.date}>
             Published on {format(new Date(article.date), "MMM do, yyyy")}
           </div>
-          <Markdown>{article.content}</Markdown>
-        </div>
+          {content.map((paragraph, i) => (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: i * 0.1 }}
+              key={i}
+            >
+              <Markdown>{paragraph}</Markdown>
+            </motion.div>
+          ))}
+        </motion.div>
       </PageContent>
     </Layout>
   );

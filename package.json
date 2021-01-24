@@ -8,8 +8,10 @@
     "start": "next start"
   },
   "dependencies": {
+    "apollo-server-micro": "^2.19.2",
     "date-fns": "^2.16.1",
     "date-fns-tz": "^1.0.12",
+    "framer-motion": "^3.2.2-rc.1",
     "gray-matter": "^4.0.2",
     "next": "10.0.0",
     "react": "17.0.1",
