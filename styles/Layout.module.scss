@@ -1,3 +1,5 @@
+@import "./colors.scss";
+
 .container {
   min-height: 100vh;
   padding: 0 0.5rem;
@@ -30,16 +32,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
+  img {
+    margin-left: 0.5rem;
+  }
 
-.footer img {
-  margin-left: 0.5rem;
-}
-
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .pageTitle {
@@ -60,22 +61,20 @@
   &:last-child {
     margin-right: 0;
   }
-}
-
-.menu svg {
-  margin-right: 1rem;
+  svg {
+    margin-right: 1rem;
+  }
 }
 
 .pageCloser {
   position: absolute;
   width: 16px;
   height: 16px;
-  color: #c6d8d3;
+  color: $white;
   top: 16px;
   right: 16px;
   cursor: pointer;
-}
-
-.pageCloser svg {
-  fill: #c6d8d3;
+  svg {
+    fill: $white;
+  }
 }

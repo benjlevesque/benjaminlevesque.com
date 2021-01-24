@@ -1,5 +1,4 @@
-.main {
-}
+@import "./colors.scss";
 
 .form {
   display: flex;
@@ -24,10 +23,10 @@
   width: 100%;
   resize: none;
   font-size: 16px;
-  color: #c6d8d3;
+  color: $white;
 }
 
 .form input[type="submit"] {
-  color: #c6d8d3;
+  color: $white;
   cursor: pointer;
 }

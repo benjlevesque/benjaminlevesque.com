@@ -8,7 +8,7 @@ import ReactIcon from "../components/icons/react";
 import TypescriptIcon from "../components/icons/typescript";
 import { Layout, PageContent, PageTitle } from "../components/Layout";
 import { Terminal, TerminalRow } from "../components/terminal";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Home.module.scss";
 import { navigation } from "../lib/navigation";
 
 const DevIcon = ({ title, icon: Icon }) => {
