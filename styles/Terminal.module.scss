@@ -83,3 +83,11 @@
     opacity: 0;
   }
 }
+
+.suggestions {
+  padding: 0 20px;
+
+  span:not(:last-child) {
+    margin-right: 5px;
+  }
+}

@@ -41,6 +41,11 @@ $small: 600px;
   flex-wrap: wrap;
   max-width: 800px;
   margin-top: 3rem;
+
+  @media (max-width: 600px) {
+    width: 100%;
+    flex-direction: column;
+  }
 }
 
 .card {
@@ -73,20 +78,20 @@ $small: 600px;
   line-height: 1.5;
 }
 
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
-  }
-}
-
 .links {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin-bottom: 1rem;
-  max-width: 550px;
+  max-width: 850px;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 6rem;
+  }
 }
 
 .divider {
@@ -115,15 +120,6 @@ $small: 600px;
   fill: #fff;
 }
 
-@media (max-width: 600px) {
-  .links {
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 6rem;
-  }
-}
-
 .icon {
   width: 2em;
   height: 2em;
@@ -133,10 +129,7 @@ $small: 600px;
   margin-top: 3rem;
   margin-bottom: 3rem;
   width: 100%;
-}
-
-@media (max-width: 600px) {
-  .summary {
+  @media (max-width: 600px) {
     padding: 0.25em;
   }
 }
