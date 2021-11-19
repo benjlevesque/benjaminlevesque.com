@@ -11,11 +11,23 @@ import { Terminal, TerminalRow } from "../components/terminal";
 import styles from "../styles/Home.module.scss";
 import { navigation } from "../lib/navigation";
 
-const DevIcon = ({ title, icon: Icon }) => {
+const DevIcon: React.FC<{
+  title: string;
+  icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
+  link: string;
+}> = ({ title, icon: Icon, link }) => {
   return (
-    <span title={title}>
-      <Icon className={styles.devicon} />
-    </span>
+    <motion.span
+      title={title}
+      whileHover={{
+        scale: 1.2,
+        transition: { duration: 0.1 },
+      }}
+    >
+      <a href={link}>
+        <Icon className={styles.devicon} />
+      </a>
+    </motion.span>
   );
 };
 
@@ -38,11 +50,31 @@ const Summary = () => {
           <div className={styles.whoami}>
             <p>I'm a software developer working with</p>
             <div className={styles.icons}>
-              <DevIcon title="Typescript" icon={TypescriptIcon} />
-              <DevIcon title="Go" icon={GolangIcon} />
-              <DevIcon title="React" icon={ReactIcon} />
-              <DevIcon title="Docker" icon={DockerIcon} />
-              <DevIcon title="Kubernetes" icon={KubernetesIcon} />
+              <DevIcon
+                title="Typescript"
+                icon={TypescriptIcon}
+                link="https://www.typescriptlang.org/"
+              />
+              <DevIcon
+                title="Go"
+                icon={GolangIcon}
+                link="https://golang.org/"
+              />
+              <DevIcon
+                title="React"
+                icon={ReactIcon}
+                link="https://reactjs.org/"
+              />
+              <DevIcon
+                title="Docker"
+                icon={DockerIcon}
+                link="https://www.docker.com/"
+              />
+              <DevIcon
+                title="Kubernetes"
+                icon={KubernetesIcon}
+                link="https://kubernetes.io/"
+              />
             </div>
           </div>
         </TerminalRow>
