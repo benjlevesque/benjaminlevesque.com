@@ -4,29 +4,97 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 16px;
-}
+  margin: 0 16px;
 
-.form input {
-  height: 50px;
-}
-.form input,
-.form textarea,
-.form input:focus,
-.form input:active,
-.form input::content,
-.form input::selection,
-.form textarea:focus {
-  background-color: transparent;
-  margin: 16px;
-  border: 0;
-  width: 100%;
-  resize: none;
-  font-size: 16px;
-  color: $white;
-}
+  input {
+    height: 50px;
+    text-indent: 1em;
+  }
 
-.form input[type="submit"] {
-  color: $white;
-  cursor: pointer;
+  textarea {
+    padding: 1em;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  }
+
+  input,
+  textarea,
+  input:focus,
+  input:active,
+  input::placeholder,
+  
+  // input::content,
+  input::selection,
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover, 
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus,
+  textarea:focus {
+    -webkit-text-fill-color: $white;
+    box-shadow: 0 0 0 1000px #1f1f1f inset;
+    -webkit-box-shadow: 0 0 0px 1000px #1f1f1f inset;
+    color: $white;
+
+    // padding: 5px;
+    // padding-left: 5px;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box; /* Opera/IE 8+ */
+
+    // background-color: #b2675e;
+    margin: 12px 0;
+    border: 0;
+    width: 100%;
+    resize: none;
+    font-size: 16px;
+    color: $white;
+  }
+
+  footer {
+    display: flex;
+    margin-top: 1em;
+    justify-content: flex-end;
+
+    $transition: all 0.2s ease-in-out;
+    //https://codepen.io/ozer/pen/KwvKoR
+    button {
+      cursor: pointer;
+      border: solid 2px $white;
+      background: transparent;
+      color: $white !important;
+
+      border-radius: 0px;
+      text-decoration: none;
+      padding: 14px 21px;
+      font-size: 13px;
+      line-height: 25px;
+      text-transform: uppercase;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 400;
+      letter-spacing: 3px;
+      -webkit-transition: $transition;
+      -moz-transition: $transition;
+      -ms-transition: $transition;
+      -o-transition: $transition;
+      transition: $transition;
+      &:hover {
+        border: solid 2px $white;
+        background: #fff;
+        color: #1f1f1f !important;
+        -webkit-transition: $transition;
+        -moz-transition: $transition;
+        -ms-transition: $transition;
+        -o-transition: $transition;
+        transition: $transition;
+      }
+      &:focus {
+        transform: scale(1.05);
+      }
+    }
+  }
 }

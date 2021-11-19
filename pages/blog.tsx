@@ -44,7 +44,7 @@ const Blog = ({ articles }: IProps) => {
   });
   return (
     <Layout title="Benjamin's blog">
-      <PageTitle layoutId="title">Benjamin's Blog</PageTitle>
+      <PageTitle>Benjamin's Blog</PageTitle>
       <PageContent>
         <PageMenu />
         <div className={styles.articleList}>

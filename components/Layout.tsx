@@ -7,6 +7,7 @@ import Head from "next/head";
 import styles from "../styles/Layout.module.scss";
 import HomeIcon from "./icons/home";
 import BlogIcon from "./icons/blog";
+import MailIcon from "./icons/mail";
 import { motion } from "framer-motion";
 import { CloseIcon } from "./icons/close";
 import { KeyboardNav } from "./KeyboardNav";
@@ -37,7 +38,12 @@ export const PageCloser: React.FC<{
 
 export const PageTitle: React.FC<any> = ({ children, ...props }) => {
   return (
-    <motion.h1 className={styles.pageTitle} {...props}>
+    <motion.h1
+      style={{ width: "100%" }}
+      className={styles.pageTitle}
+      layoutId="title"
+      {...props}
+    >
       {children}
     </motion.h1>
   );
@@ -58,6 +64,11 @@ export const PageMenu: React.FC = () => {
       <Link href="/blog">
         <a>
           <BlogIcon fill="white" /> Blog
+        </a>
+      </Link>
+      <Link href="/contact">
+        <a>
+          <MailIcon fill="white" /> Contact
         </a>
       </Link>
     </div>
