@@ -2,6 +2,7 @@ import BlogIcon from "../components/icons/blog";
 import GithubIcon from "../components/icons/github";
 import TwitterIcon from "../components/icons/twitter";
 import HomeIcon from "../components/icons/home";
+import MailIcon from "../components/icons/mail";
 
 type NavigationItem = {
   name: string;
@@ -23,6 +24,7 @@ export const navigation: Record<string, NavigationItem> = {
   contact: {
     name: "Contact",
     href: "/contact",
+    icon: MailIcon,
   },
   resume: {
     name: "Resume",
