@@ -22,7 +22,11 @@ export const PageCloser: React.FC<{
     router.push(closeRoute ? closeRoute : "/");
   }, [router, closeRoute]);
 
-  useKeyListener("Escape", close || defaultClose);
+  if (!close) {
+    close = defaultClose;
+  }
+
+  useKeyListener("Escape", close);
 
   return (
     <motion.div whileHover={{ rotate: 90 }} className={styles.pageCloser}>
