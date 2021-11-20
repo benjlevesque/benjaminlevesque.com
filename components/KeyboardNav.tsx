@@ -1,16 +1,18 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { navigationList } from "../lib/navigation";
 import { useKeyboardNavigation } from "../lib/useKeyboardNavigation";
 import { useKeyListener } from "../lib/useKeyListener";
 import styles from "../styles/KeyboardNav.module.scss";
+import { useOnClickOutside } from "../lib/useOnClickOutside";
 
-const KeyboardNavInner = () => {
+const KeyboardNavInner = ({ onClose }: { onClose: () => void }) => {
   const [navItems, setNavItems] = useState(navigationList);
   const [search, setSearch] = useState("");
   const router = useRouter();
+  const ref = useRef<HTMLDivElement>();
   const activeKey = useKeyboardNavigation(
     navItems.length,
     (index) => {
@@ -20,8 +22,11 @@ const KeyboardNavInner = () => {
         router.push(val.href);
       }
     },
-    0
+    0,
+    true
   );
+
+  useOnClickOutside(ref, onClose);
 
   useEffect(() => {
     setNavItems(
@@ -33,6 +38,7 @@ const KeyboardNavInner = () => {
 
   return (
     <motion.div
+      ref={ref}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -71,7 +77,14 @@ export const KeyboardNav = () => {
   const [visible, setVisible] = useState(false);
 
   useKeyListener("/", () => setVisible(true), { disabled: visible });
-  useKeyListener("Escape", () => setVisible(false), { disabled: !visible });
+  useKeyListener("Escape", () => setVisible(false), {
+    disabled: !visible,
+    enabledOnInput: true,
+  });
 
-  return <AnimatePresence>{visible && <KeyboardNavInner />}</AnimatePresence>;
+  return (
+    <AnimatePresence>
+      {visible && <KeyboardNavInner onClose={() => setVisible(false)} />}
+    </AnimatePresence>
+  );
 };

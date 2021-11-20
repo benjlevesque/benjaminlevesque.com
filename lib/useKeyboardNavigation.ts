@@ -4,7 +4,8 @@ import { useKeyListener } from "./useKeyListener";
 export const useKeyboardNavigation = (
   length: number,
   select?: (index: number | null) => void,
-  initialSelection: number = -1
+  initialSelection: number = -1,
+  enabledOnInput = false
 ) => {
   const [currentItem, setCurrentItem] = useState(initialSelection);
 
@@ -25,16 +26,19 @@ export const useKeyboardNavigation = (
     });
   }, [length]);
 
-  useKeyListener("j", next);
-  useKeyListener("ArrowDown", next);
-  useKeyListener("k", previous);
-  useKeyListener("ArrowUp", previous);
-  useKeyListener("Enter", () => {
-    if (select) {
-      select(currentItem);
-    }
-  });
+  useKeyListener("j", next, { enabledOnInput });
+  useKeyListener("ArrowDown", next, { enabledOnInput });
+  useKeyListener("k", previous, { enabledOnInput });
+  useKeyListener("ArrowUp", previous, { enabledOnInput });
+  useKeyListener(
+    "Enter",
+    () => {
+      if (select) {
+        select(currentItem);
+      }
+    },
+    { enabledOnInput }
+  );
 
-  console.log(currentItem);
   return currentItem === -1 ? null : currentItem;
 };
