@@ -14,11 +14,11 @@ export const Terminal = ({ children }) => {
   );
 };
 
-export const TerminalRow: React.FC<{ title?: string; cursor?: boolean }> = ({
-  title,
-  cursor,
-  children,
-}) => {
+export const TerminalRow: React.FC<{
+  title?: string;
+  cursor?: boolean;
+  children?: React.ReactNode;
+}> = ({ title, cursor, children }) => {
   return (
     <div className={styles.line}>
       {title ? "> " + title : null}

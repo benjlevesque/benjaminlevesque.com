@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 import { motion } from "framer-motion";
 import { GetStaticProps } from "next";
-import NextLink from "next/link";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { Layout, PageContent, PageMenu, PageTitle } from "../components/Layout";
@@ -18,19 +18,17 @@ const Article: React.FC<{ article: IArticle; active?: boolean }> = ({
   active,
 }) => {
   return (
-    <NextLink href={`/blog/${article.slug}`}>
-      <a
-        className={[
-          styles.articleItem,
-          active ? styles.active : undefined,
-        ].join(" ")}
-      >
-        <motion.h2 layoutId={article.slug} className={styles.title}>
-          {article.title}
-        </motion.h2>
-        <span>{format(new Date(article.date), "MMM do, yyyy")}</span>
-      </a>
-    </NextLink>
+    <Link
+      href={`/blog/${article.slug}`}
+      className={[styles.articleItem, active ? styles.active : undefined].join(
+        " ",
+      )}
+    >
+      <motion.h2 layoutId={article.slug} className={styles.title}>
+        {article.title}
+      </motion.h2>
+      <span>{format(new Date(article.date), "MMM do, yyyy")}</span>
+    </Link>
   );
 };
 

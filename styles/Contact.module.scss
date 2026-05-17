@@ -1,4 +1,4 @@
-@import "./colors.scss";
+@use "./colors.scss";
 
 .form {
   display: flex;
@@ -35,10 +35,10 @@
   select:-webkit-autofill:hover,
   select:-webkit-autofill:focus,
   textarea:focus {
-    -webkit-text-fill-color: $white;
+    -webkit-text-fill-color: colors.$white;
     box-shadow: 0 0 0 1000px #1f1f1f inset;
     -webkit-box-shadow: 0 0 0px 1000px #1f1f1f inset;
-    color: $white;
+    color: colors.$white;
 
     // padding: 5px;
     // padding-left: 5px;
@@ -52,7 +52,7 @@
     width: 100%;
     resize: none;
     font-size: 16px;
-    color: $white;
+    color: colors.$white;
   }
 
   footer {
@@ -64,9 +64,9 @@
     //https://codepen.io/ozer/pen/KwvKoR
     button {
       cursor: pointer;
-      border: solid 2px $white;
+      border: solid 2px colors.$white;
       background: transparent;
-      color: $white !important;
+      color: colors.$white !important;
 
       border-radius: 0px;
       text-decoration: none;
@@ -83,7 +83,7 @@
       -o-transition: $transition;
       transition: $transition;
       &:hover {
-        border: solid 2px $white;
+        border: solid 2px colors.$white;
         background: #fff;
         color: #1f1f1f !important;
         -webkit-transition: $transition;

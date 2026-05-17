@@ -12,7 +12,7 @@ const KeyboardNavInner = ({ onClose }: { onClose: () => void }) => {
   const [navItems, setNavItems] = useState(navigationList);
   const [search, setSearch] = useState("");
   const router = useRouter();
-  const ref = useRef<HTMLDivElement>();
+  const ref = useRef<HTMLDivElement>(null);
   const activeKey = useKeyboardNavigation(
     navItems.length,
     (index) => {
@@ -23,7 +23,7 @@ const KeyboardNavInner = ({ onClose }: { onClose: () => void }) => {
       }
     },
     0,
-    true
+    true,
   );
 
   useOnClickOutside(ref, onClose);
@@ -31,8 +31,8 @@ const KeyboardNavInner = ({ onClose }: { onClose: () => void }) => {
   useEffect(() => {
     setNavItems(
       navigationList.filter((key) =>
-        key.name.toLowerCase().includes(search.toLowerCase())
-      )
+        key.name.toLowerCase().includes(search.toLowerCase()),
+      ),
     );
   }, [search]);
 
@@ -56,14 +56,12 @@ const KeyboardNavInner = ({ onClose }: { onClose: () => void }) => {
           return (
             <li key={key} className={i === activeKey ? styles.active : null}>
               <Link href={href}>
-                <a>
-                  {Icon ? (
-                    <Icon fill="#64b6ac" className={styles.icon} />
-                  ) : (
-                    <span className={styles.icon} />
-                  )}
-                  {name}
-                </a>
+                {Icon ? (
+                  <Icon fill="#64b6ac" className={styles.icon} />
+                ) : (
+                  <span className={styles.icon} />
+                )}
+                {name}
               </Link>
             </li>
           );

@@ -13,7 +13,7 @@ import { navigation } from "../lib/navigation";
 
 const DevIcon: React.FC<{
   title: string;
-  icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
+  icon: (props: React.SVGProps<SVGSVGElement>) => React.ReactNode;
   link: string;
 }> = ({ title, icon: Icon, link }) => {
   return (
@@ -86,19 +86,18 @@ const Summary = () => {
 
 const AppLink: React.FC<{
   href: string;
-  icon?: (...props: any) => JSX.Element;
+  icon?: (...props: any) => React.ReactNode;
   text: string;
 }> = ({ href, icon: Icon, text }) => {
   return (
-    <Link href={href}>
-      <a
-        className={styles.social}
-        target={href.startsWith("http") ? "_blank" : undefined}
-        rel="noopener noreferrer"
-      >
-        {Icon && <Icon fill="#64b6ac" className={styles.icon} />}
-        <span className={styles.code}>{text}</span>
-      </a>
+    <Link
+      href={href}
+      className={styles.social}
+      target={href.startsWith("http") ? "_blank" : undefined}
+      rel="noopener noreferrer"
+    >
+      {Icon && <Icon fill="#64b6ac" className={styles.icon} />}
+      <span className={styles.code}>{text}</span>
     </Link>
   );
 };

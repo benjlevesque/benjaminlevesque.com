@@ -49,7 +49,9 @@ export const PageTitle: React.FC<any> = ({ children, ...props }) => {
   );
 };
 
-export const PageContent: React.FC = ({ children }) => {
+export const PageContent: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   return <main className={styles.main}>{children}</main>;
 };
 
@@ -57,25 +59,22 @@ export const PageMenu: React.FC = () => {
   return (
     <div className={styles.menu}>
       <Link href="/">
-        <a>
-          <HomeIcon fill="white" /> Homepage
-        </a>
+        <HomeIcon fill="white" /> Homepage
       </Link>
       <Link href="/blog">
-        <a>
-          <BlogIcon fill="white" /> Blog
-        </a>
+        <BlogIcon fill="white" /> Blog
       </Link>
       <Link href="/contact">
-        <a>
-          <MailIcon fill="white" /> Contact
-        </a>
+        <MailIcon fill="white" /> Contact
       </Link>
     </div>
   );
 };
 
-export const Layout: React.FC<{ title: string }> = ({ children, title }) => {
+export const Layout: React.FC<{ title: string; children: React.ReactNode }> = ({
+  children,
+  title,
+}) => {
   return (
     <div className={styles.container}>
       <Head>

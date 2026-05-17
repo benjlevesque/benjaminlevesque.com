@@ -15,6 +15,7 @@ export const Dot = () => {
 export const TimelineItem: React.FC<{
   left?: boolean;
   right?: boolean;
+  children: React.ReactNode;
 }> = ({ left, right, children }) => {
   return (
     <>

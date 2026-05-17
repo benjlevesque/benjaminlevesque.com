@@ -1,4 +1,4 @@
-@import "./colors.scss";
+@use "./colors.scss";
 
 .container {
   min-height: 100vh;
@@ -68,11 +68,11 @@
   position: absolute;
   width: 16px;
   height: 16px;
-  color: $white;
+  color: colors.$white;
   top: 16px;
   right: 16px;
   cursor: pointer;
   svg {
-    fill: $white;
+    fill: colors.$white;
   }
 }

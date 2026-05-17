@@ -7,7 +7,7 @@ import MailIcon from "../components/icons/mail";
 type NavigationItem = {
   name: string;
   href: string;
-  icon?: (...props: any[]) => JSX.Element;
+  icon?: (...props: any[]) => React.ReactNode;
 };
 
 export const navigation: Record<string, NavigationItem> = {
