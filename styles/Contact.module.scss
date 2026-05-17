@@ -59,6 +59,9 @@
     display: flex;
     margin-top: 1em;
     justify-content: flex-end;
+    @media (max-width: 600px) {
+      justify-content: center;
+    }
 
     $transition: all 0.2s ease-in-out;
     //https://codepen.io/ozer/pen/KwvKoR

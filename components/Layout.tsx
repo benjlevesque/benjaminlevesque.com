@@ -27,7 +27,7 @@ export const PageCloser: React.FC<{
     close = defaultClose;
   }
 
-  useKeyListener("Escape", close);
+  useKeyListener("Escape", close, { enabledOnInput: true });
 
   return (
     <motion.div whileHover={{ rotate: 90 }} className={styles.pageCloser}>

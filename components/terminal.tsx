@@ -16,19 +16,15 @@ export const Terminal = ({ children }) => {
 
 export const TerminalRow: React.FC<{
   title?: string;
-  cursor?: boolean;
   children?: React.ReactNode;
-}> = ({ title, cursor, children }) => {
+}> = ({ title, children }) => {
   return (
     <div className={styles.line}>
-      {title ? "> " + title : null}
-      {cursor ? (
-        <>
-          {"> "}
-          <span className={styles.cursor}>_</span>
-        </>
-      ) : null}
+      {"> "}
+      {title}
       {children}
     </div>
   );
 };
+
+export const TerminalCursor = () => <span className={styles.cursor}>_</span>;

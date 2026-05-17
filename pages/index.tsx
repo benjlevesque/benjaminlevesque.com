@@ -7,7 +7,7 @@ import KubernetesIcon from "../components/icons/kubernetes";
 import ReactIcon from "../components/icons/react";
 import TypescriptIcon from "../components/icons/typescript";
 import { Layout, PageContent, PageTitle } from "../components/Layout";
-import { Terminal, TerminalRow } from "../components/terminal";
+import { Terminal, TerminalCursor, TerminalRow } from "../components/terminal";
 import styles from "../styles/Home.module.scss";
 import { navigation } from "../lib/navigation";
 
@@ -24,7 +24,7 @@ const DevIcon: React.FC<{
         transition: { duration: 0.1 },
       }}
     >
-      <a href={link}>
+      <a href={link} target="_blank" rel="noopener noreferrer">
         <Icon className={styles.devicon} />
       </a>
     </motion.span>
@@ -78,7 +78,9 @@ const Summary = () => {
             </div>
           </div>
         </TerminalRow>
-        <TerminalRow cursor />
+        <TerminalRow>
+          <TerminalCursor />
+        </TerminalRow>
       </Terminal>
     </div>
   );
@@ -90,15 +92,22 @@ const AppLink: React.FC<{
   text: string;
 }> = ({ href, icon: Icon, text }) => {
   return (
-    <Link
-      href={href}
-      className={styles.social}
-      target={href.startsWith("http") ? "_blank" : undefined}
-      rel="noopener noreferrer"
+    <motion.span
+      whileHover={{
+        scale: 1.05,
+        transition: { duration: 0.1 },
+      }}
     >
-      {Icon && <Icon fill="#64b6ac" className={styles.icon} />}
-      <span className={styles.code}>{text}</span>
-    </Link>
+      <Link
+        href={href}
+        className={styles.social}
+        target={href.startsWith("http") ? "_blank" : undefined}
+        rel="noopener noreferrer"
+      >
+        {Icon && <Icon fill="#64b6ac" className={styles.icon} />}
+        <span className={styles.code}>{text}</span>
+      </Link>
+    </motion.span>
   );
 };
 
@@ -106,7 +115,8 @@ export const Links = () => {
   return (
     <div className={styles.links}>
       <AppLink text="benjlevesque" {...navigation.github} />
-      <AppLink text="benjlevesque" {...navigation.twitter} />
+      <AppLink text="@benji" {...navigation.mastodon} />
+      <AppLink text="Contact" {...navigation.contact} />
     </div>
   );
 };

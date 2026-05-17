@@ -1,6 +1,6 @@
 import BlogIcon from "../components/icons/blog";
 import GithubIcon from "../components/icons/github";
-import TwitterIcon from "../components/icons/twitter";
+import MastodonIcon from "../components/icons/mastodon";
 import HomeIcon from "../components/icons/home";
 import MailIcon from "../components/icons/mail";
 
@@ -10,7 +10,7 @@ type NavigationItem = {
   icon?: (...props: any[]) => React.ReactNode;
 };
 
-export const navigation: Record<string, NavigationItem> = {
+export const navigation = {
   blog: {
     name: "Blog",
     href: "/blog",
@@ -30,19 +30,20 @@ export const navigation: Record<string, NavigationItem> = {
     name: "Resume",
     href: "/resume",
   },
-  twitter: {
-    name: "Twitter",
-    href: "https://twitter.com/benjlevesque",
-    icon: TwitterIcon,
+  mastodon: {
+    name: "Mastodon",
+    href: "https://piaille.fr/@benji",
+    icon: MastodonIcon,
   },
   github: {
     name: "Github",
     href: "https://github.com/benjlevesque",
     icon: GithubIcon,
   },
-};
+} satisfies Record<string, NavigationItem>;
 
-export const navigationList = Object.entries(navigation).map(([key, nav]) => ({
-  key,
-  ...nav,
-}));
+export const navigationList: ({ key: string } & NavigationItem)[] =
+  Object.entries(navigation).map(([key, nav]) => ({
+    key,
+    ...nav,
+  }));

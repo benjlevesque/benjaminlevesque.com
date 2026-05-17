@@ -6,13 +6,13 @@ export const useKeyListener = (
   options: {
     enabledOnInput?: boolean;
     disabled?: boolean;
-  } = {}
+  } = {},
 ) => {
   const maybeCallCallback = (ev: KeyboardEvent) => {
     if (
       !options.enabledOnInput &&
       ["INPUT", "TEXTAREA", "SELECT"].includes(
-        (ev.target as HTMLElement).tagName
+        (ev.target as HTMLElement).tagName,
       )
     ) {
       return;
